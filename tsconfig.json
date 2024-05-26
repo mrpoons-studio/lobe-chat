@@ -31,11 +31,8 @@
   "include": [
     "next-env.d.ts",
     "vitest.config.ts",
-    "src",
-    "tests",
-    "**/*.ts",
-    "**/*.d.ts",
-    "**/*.tsx",
+    "src/**/*",
+    "tests/**/*",
     ".next/types/**/*.ts"
   ],
   "ts-node": {
