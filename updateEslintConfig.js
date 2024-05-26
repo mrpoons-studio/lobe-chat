@@ -2,14 +2,14 @@ const fs = require('fs');
 const path = require('path');
 
 // 读取 .eslintignore 文件内容
-const eslintignorePath = path.resolve(__dirname, '.eslintignore');
+const eslintignorePath = path.resolve(__dirname, './.eslintignore');
 const eslintignoreContent = fs.readFileSync(eslintignorePath, 'utf-8');
 
 // 处理 .eslintignore 文件内容为数组
 const ignores = eslintignoreContent.split('\n').filter(Boolean);
 
 // 读取 eslint.config.mjs 文件
-const eslintConfigPath = path.resolve(__dirname, 'eslint.config.mjs');
+const eslintConfigPath = path.resolve(__dirname, './eslint.config.mjs');
 let eslintConfigContent = fs.readFileSync(eslintConfigPath, 'utf-8');
 
 // 构建 ignores 配置项
