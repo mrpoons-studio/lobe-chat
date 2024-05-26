@@ -1,8 +1,21 @@
 [build]
-command = "npm run build"
-publish = ".next"
+  command = "npm run build"
+  publish = "out"
 
+[context.production.environment]
+  NEXT_PUBLIC_API_URL = "http://localhost:8000"
+  NEXT_PUBLIC_OTHER_VARIABLE = "example"
 
-[template.environment]
-OPENAI_API_KEY = "set your OpenAI API Key"
-ACCESS_CODE = "set your password to protect your api key"
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
