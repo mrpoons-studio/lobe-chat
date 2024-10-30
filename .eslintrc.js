@@ -1,6 +1,7 @@
 const config = require('@lobehub/lint').eslint;
 
 config.extends.push('plugin:@next/next/recommended');
+config.extends.push('plugin:eslint-plugin-next-on-pages/recommended');
 
 config.rules['unicorn/no-negated-condition'] = 0;
 config.rules['unicorn/prefer-type-error'] = 0;
@@ -20,7 +21,11 @@ config.rules['unicorn/prefer-number-properties'] = 0;
 
 config.overrides = [
   {
-    extends: ['plugin:mdx/recommended'],
+    extends: [
+      'plugin:mdx/recommended',
+      'plugin:eslint-plugin-next-on-pages/recommended'
+    ],
+    plugins: ['eslint-plugin-next-on-pages'],
     files: ['*.mdx'],
     rules: {
       '@typescript-eslint/no-unused-vars': 1,
