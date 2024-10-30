@@ -1,8 +1,15 @@
 import analyzer from '@next/bundle-analyzer';
 import { withSentryConfig } from '@sentry/nextjs';
 import withSerwistInit from '@serwist/next';
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 
 const isProd = process.env.NODE_ENV === 'production';
+if (process.env.NODE_ENV === 'development') {
+   const isDev = process.env.NODE_ENV === 'development';
+};
+if (process.env.NODE_ENV === 'development') {
+   await setupDevPlatform();
+}
 const buildWithDocker = process.env.DOCKER === 'true';
 
 // if you need to proxy the api endpoint to remote server
